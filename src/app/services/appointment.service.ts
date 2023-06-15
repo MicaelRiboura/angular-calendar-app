@@ -23,15 +23,17 @@ export class AppointmentService {
     const storagedAppointments = localStorage.getItem('appointments');
     const appointments = storagedAppointments ? JSON.parse(storagedAppointments) : [];
 
-    return days.map(day => {
-      const filteredAppointments = appointments
-        .map((m: object) => new Appointment().deserialize(m))
-        .filter(
-            (appointment: Appointment) => 
-              new Date(appointment.date).getDate() === day 
-                && new Date(appointment.date).getMonth() + 1 === month 
-                && new Date(appointment.date).getFullYear() === year
-        );
+    return days
+      .map(day => {
+        const filteredAppointments = appointments
+          .map((m: any) => new Appointment().deserialize(m))
+          .filter((appointment: Appointment) => {
+            const date = new Date(appointment.date);
+
+            return date.getDate() === day
+              && (date.getMonth() + 1) === month
+              && date.getFullYear() === year;
+          });
 
       return {
         day,

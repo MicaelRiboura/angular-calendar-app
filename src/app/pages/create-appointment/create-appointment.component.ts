@@ -29,7 +29,6 @@ export class CreateAppointmentComponent implements OnInit {
 
   onSubmit() {
     if (this.form.valid) {
-      console.log('submit: ', this.form.value);
       this.appointmentService.saveAppointment(this.form);
       this.router.navigateByUrl('/');
     }

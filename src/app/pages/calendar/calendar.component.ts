@@ -79,16 +79,12 @@ export class CalendarComponent implements OnInit {
   }
 
   openAppointment(appointment: Appointment): void {
-    const dialogRef = this.dialog.open(AppointmentDialogComponent, {
+    this.dialog.open(AppointmentDialogComponent, {
       height: '400px',
       width: '400px',
       data: {
         appointment,
       },
-    });
-
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
     });
   }
 }
