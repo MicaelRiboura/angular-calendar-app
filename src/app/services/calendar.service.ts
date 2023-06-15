@@ -12,7 +12,22 @@ export class CalendarService {
     for (let day = 1; day <= lastDay; day++) {
       daysInMonth.push(day);
     }
-
     return daysInMonth;
+  }
+
+  nextMonth(year: number, month: number) {
+      if ((month + 1) > 12) {
+        return { year: year + 1, month: 1 };
+      } else {
+        return { year, month: month + 1 };
+      }
+  }
+
+  previousMonth(year: number, month: number) {
+    if ((month - 1) < 1) {
+      return { year: year - 1, month: 12 };
+    } else {
+      return { year, month: month - 1 };
+    }
   }
 }
