@@ -31,5 +31,31 @@
     background-color: #1A73E8;
     border-radius: 50%;
     color: #fff;
+}
 
+.paginator-area {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100vw;
+    border: 1px solid red;
+}
+
+.paginator {
+    padding:  1rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.month-input {
+    padding: .5rem;
+    border-radius: 6px;;
+    border: 1px solid #1d1d1d;
+    outline: none;
+    margin: 0 .2rem;
+}
+
+.label-input {
+    margin-right: 3px;
+    font-weight: 700;
 }
