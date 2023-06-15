@@ -30,4 +30,17 @@ export class CalendarService {
       return { year, month: month - 1 };
     }
   }
+
+
+  nextYear(year: number, month: number) {
+    return { year: year + 1, month };
+  }
+
+  previousYear(year: number, month: number) {
+    if ((year - 1) < 1920) {
+      return { year, month };
+    } else {
+      return { year: year - 1, month };
+    }
+  }
 }
