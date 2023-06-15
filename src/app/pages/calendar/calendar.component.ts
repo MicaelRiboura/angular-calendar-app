@@ -9,11 +9,15 @@ import { CalendarService } from 'src/app/services/calendar.service';
 export class CalendarComponent implements OnInit {
 
   days: number[] = [];
+  year = 2023;
+  month = 6;
+
+  currentDate: Date = new Date();
 
   constructor(private calendarService: CalendarService) { }
 
   ngOnInit () {
-    this.days = this.calendarService.getDaysInMonth(2023, 6);
+    this.days = this.calendarService.getDaysInMonth(this.year, this.month);
   }
 
   

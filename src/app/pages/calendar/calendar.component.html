@@ -1,7 +1,7 @@
 <div className="container">
     <div class="days-area">
         <div class="day" *ngFor="let day of days">
-            <p class="day-label">{{day}}</p>
+            <p [ngClass]="{'day-label': true, 'current-day': currentDate.getDate() === day && currentDate.getFullYear() === year}">{{day}}</p>
         </div>
     </div>
 </div>
