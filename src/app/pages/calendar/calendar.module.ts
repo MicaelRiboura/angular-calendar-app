@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AppointmentDialogComponent } from './components/appointment-dialog/appointment-dialog.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 const routes = [ { path: '', component: CalendarComponent }];
@@ -23,6 +24,7 @@ const routes = [ { path: '', component: CalendarComponent }];
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
+    DragDropModule,
   ],
   providers: [
     DatePipe,

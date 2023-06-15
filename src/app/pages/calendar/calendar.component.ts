@@ -6,6 +6,7 @@ import { CalendarEventService, EventType } from 'src/app/services/calendar-event
 import { CalendarService } from 'src/app/services/calendar.service';
 import { AppointmentDialogComponent } from './components/appointment-dialog/appointment-dialog.component';
 import { Appointment } from 'src/app/models/appointment.model';
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-calendar',
@@ -91,4 +92,18 @@ export class CalendarComponent implements OnInit {
       },
     });
   }
+
+  drop (ev: CdkDragDrop<Appointment[]>) {
+    if (ev.previousContainer !== ev.container) {
+      this.appointmentService.updateAppointment(
+        ev.item.data as Appointment,
+        parseInt(ev.container.element.nativeElement.id),
+        this.month,
+        this.year,
+      );
+      
+      this.updateStates(this.year, this.month);
+    }
+  }
 }
+
