@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AppointmentService } from 'src/app/services/appointment.service';
 
 @Component({
@@ -13,6 +14,7 @@ export class CreateAppointmentComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private appointmentService: AppointmentService,
+    private router: Router,
   ) {
     this.form = new FormGroup({});
   }
@@ -29,7 +31,7 @@ export class CreateAppointmentComponent implements OnInit {
     if (this.form.valid) {
       console.log('submit: ', this.form.value);
       this.appointmentService.saveAppointment(this.form);
-      alert('salvo com sucesso');
+      this.router.navigateByUrl('/');
     }
   }
 
