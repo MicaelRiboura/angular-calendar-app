@@ -1,6 +1,18 @@
 <div className="container">
     <div class="paginator-area">
-        <div class="paginator">
+        <app-paginator
+            label="Month"
+            [value]="month"
+            [nextFlag]="EVENT_TYPE.NEXT_MONTH"
+            [previousFlag]="EVENT_TYPE.PREVIOUS_MONTH"
+        ></app-paginator>
+        <app-paginator
+            label="Year"
+            [value]="year"
+            [nextFlag]="EVENT_TYPE.NEXT_YEAR"
+            [previousFlag]="EVENT_TYPE.PREVIOUS_YEAR"
+        ></app-paginator>
+        <!-- <div class="paginator">
             <button mat-icon-button color="primary" (click)="previousMonth()">
                 <mat-icon>chevron_left</mat-icon>
             </button>
@@ -23,7 +35,7 @@
             <button mat-icon-button color="primary" (click)="nextYear()">
                 <mat-icon>chevron_right</mat-icon>
             </button>
-        </div>
+        </div> -->
     </div>
     <div class="days-area">
         <div class="day" *ngFor="let day of days">

@@ -1,0 +1,12 @@
+<div class="paginator">
+    <button mat-icon-button color="primary" (click)="previousFunction()">
+        <mat-icon>chevron_left</mat-icon>
+    </button>
+    <div class="input-area">
+        <label for="" class="label-input">{{label}}</label>
+        <input readonly [value]="value" class="month-input" type="number" placeholder="Year" />
+    </div>
+    <button mat-icon-button color="primary" (click)="nextFunction()">
+        <mat-icon>chevron_right</mat-icon>
+    </button>
+</div>

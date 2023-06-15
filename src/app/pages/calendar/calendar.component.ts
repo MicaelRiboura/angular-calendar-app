@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarEventService, EventType } from 'src/app/services/calendar-event.service';
 import { CalendarService } from 'src/app/services/calendar.service';
 
 @Component({
@@ -14,10 +15,33 @@ export class CalendarComponent implements OnInit {
 
   currentDate: Date = new Date();
 
-  constructor(private calendarService: CalendarService) { }
+  readonly EVENT_TYPE = EventType;
+
+  constructor(
+    private calendarService: CalendarService,
+    private calendarEventService: CalendarEventService,
+  ) { }
 
   ngOnInit () {
     this.days = this.calendarService.getDaysInMonth(this.year, this.month);
+
+    this.calendarEventService.bus$.subscribe(({ type }) => {
+      if (type === EventType.PREVIOUS_MONTH) {
+        this.previousMonth();
+      }
+
+      if (type === EventType.NEXT_MONTH) {
+        this.nextMonth();
+      }
+
+      if (type === EventType.PREVIOUS_YEAR) {
+        this.previousYear();
+      }
+
+      if (type === EventType.NEXT_YEAR) {
+        this.nextYear();
+      }
+    });
   }
 
   updateStates(year: number, month: number) {
