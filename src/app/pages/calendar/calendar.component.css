@@ -1,0 +1,23 @@
+.container {
+    width: 100%;
+    border: 1px solid red;
+}
+
+.days-area {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100vw;
+}
+
+.day {
+    min-width: 180px;
+    min-height: 180px;
+    border: 1px solid black;
+    margin: .2rem;
+}
+
+.day .day-label {
+    font-size: 1.3rem;
+    margin: 0.5rem;
+}
