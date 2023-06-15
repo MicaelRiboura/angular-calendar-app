@@ -3,7 +3,7 @@
     <p>{{data.appointment.description}}</p>
     <span>{{data.appointment.date | date: 'dd/MM/yyyy' }}</span>
     <div class="button-area">
-        <button class="button" mat-icon-button>
+        <button class="button" mat-icon-button (click)="delete(data.appointment)">
             <mat-icon>delete</mat-icon>
         </button>
     </div>

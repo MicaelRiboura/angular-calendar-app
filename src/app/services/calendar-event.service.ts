@@ -6,6 +6,7 @@ export enum EventType {
   PREVIOUS_YEAR = 'PREVIOUS_YEAR',
   NEXT_MONTH = 'NEXT_MONTH',
   PREVIOUS_MONTH = 'PREVIOUS_MONTH',
+  UPDATE_STATES = 'UPDATE_STATES',
 }
 
 export interface ICalendarEventData {

@@ -48,6 +48,10 @@ export class CalendarComponent implements OnInit {
       if (type === EventType.NEXT_YEAR) {
         this.nextYear();
       }
+
+      if (type === EventType.UPDATE_STATES) {
+        this.updateStates(this.year, this.month);
+      }
     });
   }
 

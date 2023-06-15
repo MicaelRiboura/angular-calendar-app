@@ -8,10 +8,14 @@ import { Day } from '../models/day.model';
 })
 export class AppointmentService {
 
-  saveAppointment(form: FormGroup) {
+  private _loadStoragedAppointments(): Appointment[] {
     const storagedAppointments = localStorage.getItem('appointments');
-
     const appointments = storagedAppointments ? JSON.parse(storagedAppointments) : [];
+    return appointments;
+  }
+
+  saveAppointment(form: FormGroup) {
+    const appointments = this._loadStoragedAppointments();
     appointments.push(form.value);
 
     const jsonAppointments = JSON.stringify(appointments);
@@ -20,13 +24,12 @@ export class AppointmentService {
   }
 
   listAppointments(days: number[], month: number, year: number): Day[] {
-    const storagedAppointments = localStorage.getItem('appointments');
-    const appointments = storagedAppointments ? JSON.parse(storagedAppointments) : [];
+    const appointments = this._loadStoragedAppointments();
 
     return days
       .map(day => {
         const filteredAppointments = appointments
-          .map((m: any) => new Appointment().deserialize(m))
+          .map((m: object) => new Appointment().deserialize(m))
           .filter((appointment: Appointment) => {
             const date = new Date(appointment.date);
 
@@ -41,4 +44,11 @@ export class AppointmentService {
       };
     }).map((m: object) => new Day().deserialize(m));
   }
+
+  deleteAppointment(appointment: Appointment) {
+    const appointments = this._loadStoragedAppointments();
+
+    const updatedList = appointments.filter(a => a.title !== appointment.title && a.title);
+    localStorage.setItem('appointments', JSON.stringify(updatedList));
+  } 
 }
