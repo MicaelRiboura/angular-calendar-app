@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Day } from 'src/app/models/day.model';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { CalendarEventService, EventType } from 'src/app/services/calendar-event.service';
 import { CalendarService } from 'src/app/services/calendar.service';
+import { AppointmentDialogComponent } from './components/appointment-dialog/appointment-dialog.component';
+import { Appointment } from 'src/app/models/appointment.model';
 
 @Component({
   selector: 'app-calendar',
@@ -23,6 +26,7 @@ export class CalendarComponent implements OnInit {
     private calendarService: CalendarService,
     private calendarEventService: CalendarEventService,
     private appointmentService: AppointmentService,
+    private dialog: MatDialog,
   ) { }
 
   ngOnInit () {
@@ -72,5 +76,19 @@ export class CalendarComponent implements OnInit {
   previousYear() {
     const { year, month } = this.calendarService.previousYear(this.year, this.month);
     this.updateStates(year, month);
-  }  
+  }
+
+  openAppointment(appointment: Appointment): void {
+    const dialogRef = this.dialog.open(AppointmentDialogComponent, {
+      height: '400px',
+      width: '400px',
+      data: {
+        appointment,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
+  }
 }

@@ -73,4 +73,8 @@
     margin: 6px 0;
     color: #fff;
     cursor: pointer;
+    border: none;
+    outline: none;
+    width: 100%;
+    display: block;
 }
