@@ -5,17 +5,17 @@
                 <mat-label>Title</mat-label>
                 <input type="text" matInput formControlName="title"
                     placeholder="Ex. Math Study">
-                <!-- <mat-error *ngIf="titleFormControl.hasError('required')">
+                <mat-error *ngIf="validateField('title')">
                     Title is <strong>required</strong>
-                </mat-error> -->                
+                </mat-error>                
             </mat-form-field>
             <mat-form-field class="input-form">
                 <mat-label>Description</mat-label>
                 <input type="text" matInput formControlName="description"
                     placeholder="Ex. Study to math exam">
-                <!-- <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                <mat-error *ngIf="validateField('description')">
                     Title is <strong>required</strong>
-                </mat-error> -->
+                </mat-error>
             </mat-form-field>
 
             <mat-form-field class="input-form">
