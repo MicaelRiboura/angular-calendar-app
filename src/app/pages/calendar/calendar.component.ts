@@ -20,19 +20,29 @@ export class CalendarComponent implements OnInit {
     this.days = this.calendarService.getDaysInMonth(this.year, this.month);
   }
 
-  nextMonth() {
-    const { year, month } = this.calendarService.nextMonth(this.year, this.month);
+  updateStates(year: number, month: number) {
     this.month = month;
     this.year = year;
     this.days = this.calendarService.getDaysInMonth(year, month);
+  }
+
+  nextMonth() {
+    const { year, month } = this.calendarService.nextMonth(this.year, this.month);
+    this.updateStates(year, month);
   }
 
   previousMonth() {
     const { year, month } = this.calendarService.previousMonth(this.year, this.month);
-    this.month = month;
-    this.year = year;
-    this.days = this.calendarService.getDaysInMonth(year, month);
+    this.updateStates(year, month);
   }
 
-  
+  nextYear() {
+    const { year, month } = this.calendarService.nextYear(this.year, this.month);
+    this.updateStates(year, month);
+  }
+
+  previousYear() {
+    const { year, month } = this.calendarService.previousYear(this.year, this.month);
+    this.updateStates(year, month);
+  }  
 }

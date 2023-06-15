@@ -13,14 +13,14 @@
             </button>
         </div>
         <div class="paginator">
-            <button mat-icon-button color="primary">
+            <button mat-icon-button color="primary" (click)="previousYear()">
                 <mat-icon>chevron_left</mat-icon>
             </button>
             <div class="input-area">
                 <label for="" class="label-input">Year</label>
                 <input readonly [value]="year" class="month-input" type="number" placeholder="Year" />
             </div>
-            <button mat-icon-button color="primary">
+            <button mat-icon-button color="primary" (click)="nextYear()">
                 <mat-icon>chevron_right</mat-icon>
             </button>
         </div>
