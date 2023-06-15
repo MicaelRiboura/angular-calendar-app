@@ -13,11 +13,6 @@ export class Appointment implements Deserializable<Appointment> {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     deserialize(input: any): Appointment {
-        if (input.date) {
-            this.date = new Date(input.date);
-            delete input.date;
-        }
-
         Object.assign(this, input);
         return this;
     }
