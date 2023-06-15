@@ -50,5 +50,30 @@ export class AppointmentService {
 
     const updatedList = appointments.filter(a => a.title !== appointment.title && a.title);
     localStorage.setItem('appointments', JSON.stringify(updatedList));
-  } 
+  }
+
+  updateAppointment(appointment: Appointment, newDay: number, month: number, year: number) {
+    console.log({
+      appointment,
+      newDay,
+      month,
+      year,
+    })
+    const appointments = this._loadStoragedAppointments();
+
+    console.log(appointments);
+
+    const index = appointments
+      .findIndex(
+        a => a.title === appointment.title
+          && a.description === appointment.description
+          && a.date === appointment.date
+      );
+
+    console.log(index)
+
+    appointments[index].date = new Date(year, month  - 1, newDay);
+
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+  }
 }
