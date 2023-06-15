@@ -14,8 +14,16 @@
         ></app-paginator>
     </div>
     <div class="days-area">
-        <div class="day" *ngFor="let day of days">
-            <p [ngClass]="{'day-label': true, 'current-day': currentDate.getDate() === day && currentDate.getMonth() + 1 === month && currentDate.getFullYear() === year}">{{day}}</p>
+        <div class="day" *ngFor="let item of daysWithAppointments">
+            <p 
+                [ngClass]="{'day-label': true, 'current-day': currentDate.getDate() === item.day && currentDate.getMonth() + 1 === month && currentDate.getFullYear() === year}"
+            >
+                {{item.day}}
+            </p>
+
+            <div class="appointments-list">
+                <div *ngFor="let appointment of item.appointments" class="appointment-item">{{appointment.title}}</div>
+            </div>
         </div>
     </div>
 </div>

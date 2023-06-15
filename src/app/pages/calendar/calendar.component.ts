@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Day } from 'src/app/models/day.model';
 import { AppointmentService } from 'src/app/services/appointment.service';
 import { CalendarEventService, EventType } from 'src/app/services/calendar-event.service';
 import { CalendarService } from 'src/app/services/calendar.service';
@@ -13,8 +14,8 @@ export class CalendarComponent implements OnInit {
   days: number[] = [];
   year = 2023;
   month = 6;
-
   currentDate: Date = new Date();
+  daysWithAppointments: Day[] = [];
 
   readonly EVENT_TYPE = EventType;
 
@@ -25,7 +26,7 @@ export class CalendarComponent implements OnInit {
   ) { }
 
   ngOnInit () {
-    this.days = this.calendarService.getDaysInMonth(this.year, this.month);
+    this.updateStates(this.year, this.month);
 
     this.calendarEventService.bus$.subscribe(({ type }) => {
       if (type === EventType.PREVIOUS_MONTH) {
@@ -50,6 +51,7 @@ export class CalendarComponent implements OnInit {
     this.month = month;
     this.year = year;
     this.days = this.calendarService.getDaysInMonth(year, month);
+    this.daysWithAppointments = this.appointmentService.listAppointments(this.days, this.month, this.year);
   }
 
   nextMonth() {
