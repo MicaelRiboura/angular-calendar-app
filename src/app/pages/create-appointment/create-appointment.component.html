@@ -1,1 +1,31 @@
-<p>create-appointment works!</p>
+<div class="container">
+    <div class="form-area">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" action="">
+            <mat-form-field class="input-form">
+                <mat-label>Title</mat-label>
+                <input type="text" matInput formControlName="title"
+                    placeholder="Ex. Math Study">
+                <!-- <mat-error *ngIf="titleFormControl.hasError('required')">
+                    Title is <strong>required</strong>
+                </mat-error> -->                
+            </mat-form-field>
+            <mat-form-field class="input-form">
+                <mat-label>Description</mat-label>
+                <input type="text" matInput formControlName="description"
+                    placeholder="Ex. Study to math exam">
+                <!-- <mat-error *ngIf="descriptionFormControl.hasError('required')">
+                    Title is <strong>required</strong>
+                </mat-error> -->
+            </mat-form-field>
+
+            <mat-form-field class="input-form">
+                <mat-label>Choose a date</mat-label>
+                <input matInput formControlName="date" [matDatepicker]="picker">
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <button type="submit" mat-flat-button color="primary">Save</button>
+        </form>
+    </div>
+</div>

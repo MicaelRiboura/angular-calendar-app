@@ -1,0 +1,15 @@
+.container {
+    width: 100vw;
+    border: 1px solid red;
+}
+
+.form-area {
+    max-width: 768px;
+    padding: 1rem;
+    margin: 1rem auto;
+}
+
+.input-form {
+    width: 100%;
+    display: block;
+}
