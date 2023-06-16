@@ -16,8 +16,8 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
 export class CalendarComponent implements OnInit {
 
   days: number[] = [];
-  year = 2023;
-  month = 6;
+  year = new Date().getFullYear();
+  month = new Date().getMonth() + 1;
   currentDate: Date = new Date();
   daysWithAppointments: Day[] = [];
 
